@@ -153,11 +153,14 @@ colnames(for.plot)<-c("log2_Chip.Enrichment","log2_rden.change","Type")
 
 library(ggplot2)
 
+png(filename="../rst/myplot.png",width=1400,height=1200)
 ggplot(data=for.plot, mapping=aes(x=log2_Chip.Enrichment,y=log2_rden.change)) +
   geom_point(aes(color=Type))
+dev.off()
 
 cor(for.plot$log2_Chip.Enrichment,for.plot$log2_rden.change,method = "spearman") # 0.28
 cor(for.plot$log2_Chip.Enrichment,for.plot$log2_rden.change,method = "pearson") # 0.34 Wow
 
 #The correlations from Original filtered set and from genes with type informations set are quite different.
-#I think the set which has type information cannot repressent the whole data set well.
+#I think the set which has type information cannot represent the whole data set well.
+
